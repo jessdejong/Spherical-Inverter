@@ -1,8 +1,8 @@
-classdef SphereInverterSourceCode < matlab.apps.AppBase
+classdef SphericalInverter < matlab.apps.AppBase
 
     % Properties that correspond to app components
     properties (Access = public)
-        SphereInverterUIFigure       matlab.ui.Figure
+        SphericalInverterUIFigure    matlab.ui.Figure
         UIAxes                       matlab.ui.control.UIAxes
         InverseSpherePanel           matlab.ui.container.Panel
         RadiusEditFieldLabel         matlab.ui.control.Label
@@ -740,13 +740,13 @@ classdef SphereInverterSourceCode < matlab.apps.AppBase
         % Create UIFigure and components
         function createComponents(app)
 
-            % Create SphereInverterUIFigure and hide until all components are created
-            app.SphereInverterUIFigure = uifigure('Visible', 'off');
-            app.SphereInverterUIFigure.Position = [100 100 1010 581];
-            app.SphereInverterUIFigure.Name = 'Sphere Inverter';
+            % Create SphericalInverterUIFigure and hide until all components are created
+            app.SphericalInverterUIFigure = uifigure('Visible', 'off');
+            app.SphericalInverterUIFigure.Position = [100 100 1010 581];
+            app.SphericalInverterUIFigure.Name = 'Spherical Inverter';
 
             % Create UIAxes
-            app.UIAxes = uiaxes(app.SphereInverterUIFigure);
+            app.UIAxes = uiaxes(app.SphericalInverterUIFigure);
             title(app.UIAxes, '3D Plot')
             xlabel(app.UIAxes, 'X')
             ylabel(app.UIAxes, 'Y')
@@ -754,7 +754,7 @@ classdef SphereInverterSourceCode < matlab.apps.AppBase
             app.UIAxes.Position = [418 1 593 581];
 
             % Create InverseSpherePanel
-            app.InverseSpherePanel = uipanel(app.SphereInverterUIFigure);
+            app.InverseSpherePanel = uipanel(app.SphericalInverterUIFigure);
             app.InverseSpherePanel.Title = 'Inverse Sphere';
             app.InverseSpherePanel.Position = [16 444 392 104];
 
@@ -816,14 +816,14 @@ classdef SphereInverterSourceCode < matlab.apps.AppBase
             app.InvVisBox.Value = true;
 
             % Create SphericalInverterLabel
-            app.SphericalInverterLabel = uilabel(app.SphereInverterUIFigure);
+            app.SphericalInverterLabel = uilabel(app.SphericalInverterUIFigure);
             app.SphericalInverterLabel.FontSize = 20;
             app.SphericalInverterLabel.FontWeight = 'bold';
             app.SphericalInverterLabel.Position = [16 552 174 24];
             app.SphericalInverterLabel.Text = 'Spherical Inverter';
 
             % Create DataPanel
-            app.DataPanel = uipanel(app.SphereInverterUIFigure);
+            app.DataPanel = uipanel(app.SphericalInverterUIFigure);
             app.DataPanel.Title = 'Data';
             app.DataPanel.Position = [16 34 392 412];
 
@@ -1080,13 +1080,13 @@ classdef SphereInverterSourceCode < matlab.apps.AppBase
             app.FuncLabel.Text = 'Function';
 
             % Create InvButton
-            app.InvButton = uibutton(app.SphereInverterUIFigure, 'push');
+            app.InvButton = uibutton(app.SphericalInverterUIFigure, 'push');
             app.InvButton.ButtonPushedFcn = createCallbackFcn(app, @updateInv, true);
             app.InvButton.Position = [167 6 100 22];
             app.InvButton.Text = 'Invert';
 
             % Show the figure after all components are created
-            app.SphereInverterUIFigure.Visible = 'on';
+            app.SphericalInverterUIFigure.Visible = 'on';
         end
     end
 
@@ -1094,13 +1094,13 @@ classdef SphereInverterSourceCode < matlab.apps.AppBase
     methods (Access = public)
 
         % Construct app
-        function app = SphereInverterSourceCode
+        function app = SphericalInverter
 
             % Create UIFigure and components
             createComponents(app)
 
             % Register the app with App Designer
-            registerApp(app, app.SphereInverterUIFigure)
+            registerApp(app, app.SphericalInverterUIFigure)
 
             % Execute the startup function
             runStartupFcn(app, @onStart)
@@ -1114,7 +1114,7 @@ classdef SphereInverterSourceCode < matlab.apps.AppBase
         function delete(app)
 
             % Delete UIFigure when app is deleted
-            delete(app.SphereInverterUIFigure)
+            delete(app.SphericalInverterUIFigure)
         end
     end
 end
